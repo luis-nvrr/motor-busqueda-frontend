@@ -1,4 +1,4 @@
-# Motor de busque
+# Motor de busqueda
 
 ## Requiere
 
