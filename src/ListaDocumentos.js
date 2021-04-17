@@ -1,7 +1,12 @@
 import React from "react";
 import ItemDocumento from "./ItemDocumento";
 
-const ListaDocumentos = ({ documentos, handleAbrir }) => {
+const ListaDocumentos = ({
+  documentos,
+  handleAbrir,
+  handleDescargar,
+  handleMostrarInfo,
+}) => {
   return (
     <div>
       {documentos.map((documento) => (
@@ -9,6 +14,8 @@ const ListaDocumentos = ({ documentos, handleAbrir }) => {
           documento={documento}
           key={documento.nombre}
           handleAbrir={handleAbrir}
+          handleDescargar={handleDescargar}
+          handleMostrarInfo={handleMostrarInfo}
         />
       ))}
     </div>
