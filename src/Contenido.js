@@ -1,14 +1,23 @@
 import React from "react";
 import "./Contenido.css";
-
+import Typography from "@material-ui/core/Typography";
 const Contenido = ({ texto, titulo }) => {
-  return (
-    <div>
-      <h2>Contenido</h2>
-      <h3>{titulo}</h3>
-      <div className="display-linebreak">{texto}</div>
-    </div>
-  );
+  if (texto) {
+    return (
+      <div>
+        <Typography variant="h5">Contenido</Typography>
+        <Typography variant="overline">{titulo}</Typography>
+        <Typography
+          variant="body1"
+          paragraph="true"
+          className="display-linebreak"
+        >
+          {texto}
+        </Typography>
+      </div>
+    );
+  }
+  return <div></div>;
 };
 
 export default Contenido;

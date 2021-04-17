@@ -1,6 +1,7 @@
 import React from "react";
 import ListaDocumentos from "./ListaDocumentos";
 import Buscador from "./Buscador";
+import Typography from "@material-ui/core/Typography";
 
 const Busqueda = ({
   handleAbrir,
@@ -14,7 +15,7 @@ const Busqueda = ({
 }) => {
   return (
     <div>
-      <h1> Motor de busqueda DLC</h1>
+      <Typography variant="h4"> Motor de Busqueda</Typography>
       <Buscador
         buscado={buscado}
         handleBuscarChange={handleBuscarChange}

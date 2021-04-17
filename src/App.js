@@ -3,6 +3,10 @@ import documentoService from "./services/documentos";
 import Busqueda from "./Busqueda";
 import Contenido from "./Contenido";
 import InfoDocumento from "./InfoDocumento";
+import "fontsource-roboto";
+import Container from "@material-ui/core/Container";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 
 function App() {
   const [documentos, setDocumentos] = useState([]);
@@ -56,23 +60,39 @@ function App() {
   };
 
   return (
-    <div>
-      <Busqueda
-        handleAbrir={handleAbrir}
-        documentos={documentos}
-        handleBuscarChange={handleBuscarChange}
-        buscado={buscado}
-        clearBuscado={clearBuscado}
-        handleBuscarSubmit={handleBuscarSubmit}
-        handleDescargar={handleDescargar}
-        handleMostrarInfo={handleMostrarInfo}
-      />
-      <InfoDocumento
-        frecuencia={visualizado.frecuencia}
-        titulo={visualizado.nombre}
-      />
-      <Contenido texto={abierto.texto} titulo={abierto.nombre} />
-    </div>
+    <Container>
+      <div>
+        <Grid
+          container
+          spacing={2}
+          direction="column"
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item xs={12}>
+            <Busqueda
+              handleAbrir={handleAbrir}
+              documentos={documentos}
+              handleBuscarChange={handleBuscarChange}
+              buscado={buscado}
+              clearBuscado={clearBuscado}
+              handleBuscarSubmit={handleBuscarSubmit}
+              handleDescargar={handleDescargar}
+              handleMostrarInfo={handleMostrarInfo}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <InfoDocumento
+              titulo={visualizado.nombre}
+              frecuencia={visualizado.frecuencia}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Contenido texto={abierto.texto} titulo={abierto.nombre} />
+          </Grid>
+        </Grid>
+      </div>
+    </Container>
   );
 }
 
