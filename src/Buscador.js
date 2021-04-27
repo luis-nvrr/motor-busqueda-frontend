@@ -34,10 +34,15 @@ const Buscador = ({
           startIcon={<CloudUploadIcon/>}
           variant="contained"
           color="default"
-          onClick={handleCargar}
           size="large"
+          component="label"
         >
           cargar documento
+          <input
+          onChange={handleCargar}
+          type="File"
+          hidden
+          />
         </Button>
       </form>
     </div>

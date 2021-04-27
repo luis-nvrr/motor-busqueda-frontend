@@ -13,6 +13,7 @@ const Busqueda = ({
   handleBuscarSubmit,
   handleDescargar,
   handleMostrarInfo,
+  handleCargar,
   visualizado,
 }) => {
   return (
@@ -26,6 +27,7 @@ const Busqueda = ({
         handleBuscarChange={handleBuscarChange}
         clearBuscado={clearBuscado}
         handleBuscarSubmit={handleBuscarSubmit}
+        handleCargar={handleCargar}
       />
       <br></br><br></br>  
       <Resultados

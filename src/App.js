@@ -52,6 +52,25 @@ function App() {
     });
   };
 
+  const handleCargar = (event) => {
+    event.preventDefault();
+
+    let formData = new FormData();
+    const file = event.target.files[0];
+
+    if(event.target.files.length === 0) {return;}
+
+    formData.append("file", file)
+    console.log(file);
+    
+    documentoService.saveDocumento(formData)
+    .then((response) => {
+      console.log(response)
+      alert("Archivo cargado!")
+    })
+    .catch("Error en la carga del archivo");
+  }
+
   const clearBuscado = () => () => {
     setBuscado("");
     setDocumentos([]);
@@ -62,7 +81,7 @@ function App() {
       <div>
         <Grid
           container
-          spacing={40}
+          spacing={8}
           direction="column"
           justify="center"
           alignItems="center"
@@ -77,6 +96,7 @@ function App() {
               handleBuscarSubmit={handleBuscarSubmit}
               handleDescargar={handleDescargar}
               handleMostrarInfo={handleMostrarInfo}
+              handleCargar={handleCargar}
               visualizado={visualizado}
             />
           </Grid>
