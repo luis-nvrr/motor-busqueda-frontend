@@ -62,12 +62,12 @@ function App() {
       <div>
         <Grid
           container
-          spacing={2}
+          spacing={40}
           direction="column"
           justify="center"
           alignItems="center"
         >
-          <Grid item xl={12}>
+          <Grid item xl={12} style={{paddingLeft: 0, paddingRight: 0}}>
             <Busqueda
               handleAbrir={handleAbrir}
               documentos={documentos}
@@ -80,7 +80,7 @@ function App() {
               visualizado={visualizado}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{paddingLeft: 0, paddingRight: 0}}>
             <Contenido texto={abierto.texto} titulo={abierto.nombre} />
           </Grid>
         </Grid>

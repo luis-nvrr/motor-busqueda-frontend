@@ -2,6 +2,7 @@ import React from "react";
 import Buscador from "./Buscador";
 import Typography from "@material-ui/core/Typography";
 import Resultados from "./Resultados";
+import AppBar from '@material-ui/core/AppBar'
 
 const Busqueda = ({
   handleAbrir,
@@ -16,7 +17,10 @@ const Busqueda = ({
 }) => {
   return (
     <div>
-      <Typography variant="h4"> Motor de Busqueda</Typography>
+      <AppBar position="static">
+        <Typography variant="h5" color="inherit"> Motor de Busqueda</Typography>
+      </AppBar> 
+      <br></br> <br></br>
       <Buscador
         buscado={buscado}
         handleBuscarChange={handleBuscarChange}
