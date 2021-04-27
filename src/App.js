@@ -2,10 +2,8 @@ import React, { useState, useEffect } from "react";
 import documentoService from "./services/documentos";
 import Busqueda from "./Busqueda";
 import Contenido from "./Contenido";
-import InfoDocumento from "./InfoDocumento";
 import "fontsource-roboto";
 import Container from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 function App() {
@@ -79,12 +77,7 @@ function App() {
               handleBuscarSubmit={handleBuscarSubmit}
               handleDescargar={handleDescargar}
               handleMostrarInfo={handleMostrarInfo}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <InfoDocumento
-              titulo={visualizado.nombre}
-              frecuencia={visualizado.frecuencia}
+              visualizado={visualizado}
             />
           </Grid>
           <Grid item xs={12}>

@@ -1,7 +1,7 @@
 import React from "react";
-import ListaDocumentos from "./ListaDocumentos";
 import Buscador from "./Buscador";
 import Typography from "@material-ui/core/Typography";
+import Resultados from "./Resultados";
 
 const Busqueda = ({
   handleAbrir,
@@ -12,6 +12,7 @@ const Busqueda = ({
   handleBuscarSubmit,
   handleDescargar,
   handleMostrarInfo,
+  visualizado,
 }) => {
   return (
     <div>
@@ -22,11 +23,12 @@ const Busqueda = ({
         clearBuscado={clearBuscado}
         handleBuscarSubmit={handleBuscarSubmit}
       />
-      <ListaDocumentos
+      <Resultados
         documentos={documentos}
         handleAbrir={handleAbrir}
         handleDescargar={handleDescargar}
         handleMostrarInfo={handleMostrarInfo}
+        visualizado={visualizado}
       />
     </div>
   );

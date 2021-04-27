@@ -1,15 +1,14 @@
 import axios from "axios";
-const baseUrl = "http://localhost:3001/api/documento";
 
 const getDocumentoByTermino = (termino) => {
-  const request = axios.get(`http://localhost:3001/api/termino/${termino}`);
+  const request = axios.get(`http://localhost:8080/motor-busqueda-dlc-api-1.0-SNAPSHOT/api/documentos/${termino}`);
   return request.then((response) => response.data);
 };
 
 const getDocumentoByNombre = (nombre) => {
   return axios({
     method: "get",
-    url: `http://localhost:3001/api/documento/${nombre}`,
+    url: `http://localhost:8080/motor-busqueda-dlc-api-1.0-SNAPSHOT/api/documento/${nombre}`,
     responseType: "blob",
   });
 };

@@ -9,7 +9,7 @@ const Contenido = ({ texto, titulo }) => {
         <Typography variant="overline">{titulo}</Typography>
         <Typography
           variant="body1"
-          paragraph="true"
+          paragraph={true}
           className="display-linebreak"
         >
           {texto}
