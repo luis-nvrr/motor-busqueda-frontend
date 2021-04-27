@@ -67,7 +67,7 @@ function App() {
           justify="center"
           alignItems="center"
         >
-          <Grid item xs={12}>
+          <Grid item xl={12}>
             <Busqueda
               handleAbrir={handleAbrir}
               documentos={documentos}
