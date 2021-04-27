@@ -23,6 +23,7 @@ const Busqueda = ({
         clearBuscado={clearBuscado}
         handleBuscarSubmit={handleBuscarSubmit}
       />
+      <br></br><br></br>  
       <Resultados
         documentos={documentos}
         handleAbrir={handleAbrir}

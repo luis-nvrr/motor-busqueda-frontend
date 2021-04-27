@@ -13,16 +13,17 @@ const Resultados = ({
   if (documentos.length !== 0) {
     return (
       <div>
-        <Typography variant="subtitle1"> Resultados </Typography>
+        <Typography variant="h5"> Resultados </Typography>
         <ListaDocumentos
           documentos={documentos}
           handleAbrir={handleAbrir}
           handleDescargar={handleDescargar}
           handleMostrarInfo={handleMostrarInfo}
-        />
+        /><br></br><br></br> 
         <InfoDocumento
           titulo={visualizado.nombre}
-          frecuencia={visualizado.frecuencia}
+          indice={visualizado.indice}
+          path={visualizado.ubicacion}
         />
       </div>
     );
