@@ -17,10 +17,13 @@ function App() {
       setAbierto({});
       return;
     }
-    setAbierto(documento);
+    documentoService
+    .getDocumentoText(documento.nombre)
+    .then((documentoBuscado) => setAbierto(documentoBuscado) )
   };
 
   const handleMostrarInfo = (documento) => () => {
+    setAbierto({})
     if (documento.nombre === visualizado.nombre) {
       setVisualizado({});
       return;
@@ -35,12 +38,19 @@ function App() {
   };
 
   const handleBuscarSubmit = (event) => {
+    clearAll()
     event.preventDefault();
     documentoService
       .getDocumentoByTermino(buscado)
       .then((documentosRecuperados) => setDocumentos(documentosRecuperados))
       .catch((error) => console.log(error));
   };
+
+  const clearAll = () =>{
+    setDocumentos([])
+    setAbierto({})
+    setVisualizado({})
+  }
 
   const handleDescargar = (documento) => () => {
     documentoService.getDocumentoByNombre(documento.nombre).then((response) => {
