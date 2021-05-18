@@ -2,7 +2,7 @@ import React from "react";
 import Buscador from "./Buscador";
 import Typography from "@material-ui/core/Typography";
 import Resultados from "./Resultados";
-import AppBar from '@material-ui/core/AppBar'
+import AppBar from "@material-ui/core/AppBar";
 
 const Busqueda = ({
   handleAbrir,
@@ -14,13 +14,17 @@ const Busqueda = ({
   handleDescargar,
   handleMostrarInfo,
   handleCargar,
+  handleListarDocumentos,
   visualizado,
 }) => {
   return (
     <div>
       <AppBar position="static">
-        <Typography variant="h5" color="inherit"> Motor de Busqueda</Typography>
-      </AppBar> 
+        <Typography variant="h5" color="inherit">
+          {" "}
+          Motor de Busqueda
+        </Typography>
+      </AppBar>
       <br></br> <br></br>
       <Buscador
         buscado={buscado}
@@ -28,8 +32,10 @@ const Busqueda = ({
         clearBuscado={clearBuscado}
         handleBuscarSubmit={handleBuscarSubmit}
         handleCargar={handleCargar}
+        handleListarDocumentos={handleListarDocumentos}
       />
-      <br></br><br></br>  
+      <br></br>
+      <br></br>
       <Resultados
         documentos={documentos}
         handleAbrir={handleAbrir}

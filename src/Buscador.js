@@ -2,14 +2,17 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
-import CloudUploadIcon from '@material-ui/icons/CloudUpload'
+import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import ListIcon from "@material-ui/icons/List";
+import Box from "@material-ui/core/Box";
 
 const Buscador = ({
   buscado,
   handleBuscarChange,
   clearBuscado,
   handleBuscarSubmit,
-  handleCargar
+  handleCargar,
+  handleListarDocumentos,
 }) => {
   return (
     <div>
@@ -20,6 +23,7 @@ const Buscador = ({
           value={buscado}
           onChange={handleBuscarChange}
           onBlur={clearBuscado}
+          size="medium"
         />
         <Button
           startIcon={<SearchIcon />}
@@ -31,18 +35,24 @@ const Buscador = ({
           buscar
         </Button>
         <Button
-          startIcon={<CloudUploadIcon/>}
+          startIcon={<CloudUploadIcon />}
           variant="contained"
           color="default"
           size="large"
           component="label"
         >
           cargar documento
-          <input
-          onChange={handleCargar}
-          type="File"
-          hidden
-          />
+          <input onChange={handleCargar} type="File" hidden />
+        </Button>
+        <Button
+          startIcon={<ListIcon />}
+          variant="contained"
+          color="default"
+          size="large"
+          component="label"
+          onClick={handleListarDocumentos}
+        >
+          mostrar documentos
         </Button>
       </form>
     </div>

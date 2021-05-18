@@ -9,28 +9,29 @@ const getDocumentoByTermino = (termino) => {
 const getDocumentoByNombre = (nombre) => {
   return axios({
     method: "get",
-    url: `${baseUrl}/download/${nombre}`,
+    url: `${baseUrl}/documentos/${nombre}`,
     responseType: "blob",
   });
 };
 
-const getDocumentoText = (nombre) => {
-  const request = axios.get(`${baseUrl}/documentos/${nombre}`)
-  return request.then(response => response.data)
-}
-
 const saveDocumento = (documento) => {
-  return axios.post(`${baseUrl}/documentos`, documento, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  })
-  .then(response => response.data)
+  return axios
+    .post(`${baseUrl}/documentos`, documento, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    })
+    .then((response) => response.data);
+};
+
+const getDocumentos = () => {
+  const request = axios.get(`${baseUrl}/documentos`);
+  return request.then((response) => response.data);
 };
 
 export default {
   getDocumentoByTermino,
   getDocumentoByNombre,
   saveDocumento,
-  getDocumentoText
+  getDocumentos,
 };
