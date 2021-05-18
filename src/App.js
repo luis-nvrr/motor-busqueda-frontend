@@ -105,14 +105,19 @@ function App() {
         console.log(response);
         alert("Archivo cargado!");
       })
-      .catch("Error en la carga del archivo");
+      .catch((error) => {
+        console.log("Error en la carga del archivo");
+      });
   };
 
   const handleListarDocumentos = () => {
     clearBuscado();
-    documentoService.getDocumentos().then((documentsList) => {
-      setDocumentos(documentsList);
-    });
+    documentoService
+      .getDocumentos()
+      .then((documentsList) => {
+        setDocumentos(documentsList);
+      })
+      .catch((error) => console.log(error));
   };
 
   const clearBuscado = () => () => {
