@@ -3,6 +3,13 @@ import ListaDocumentos from "./ListaDocumentos";
 import InfoDocumento from "./InfoDocumento";
 import Typography from "@material-ui/core/Typography";
 
+const areEqual = (prevProps, nextProps) => {
+  return (
+    prevProps.documentos === nextProps.documentos &&
+    prevProps.visualizado === nextProps.visualizado
+  );
+};
+
 const Resultados = ({
   documentos,
   handleAbrir,
@@ -19,7 +26,9 @@ const Resultados = ({
           handleAbrir={handleAbrir}
           handleDescargar={handleDescargar}
           handleMostrarInfo={handleMostrarInfo}
-        /><br></br><br></br> 
+        />
+        <br></br>
+        <br></br>
         <InfoDocumento
           titulo={visualizado.nombre}
           indice={visualizado.indice}
@@ -28,7 +37,11 @@ const Resultados = ({
       </div>
     );
   }
-  return <div></div>;
+  return (
+    <div>
+      <Typography variant="h5"> No hay resultados!</Typography>
+    </div>
+  );
 };
 
-export default Resultados;
+export default React.memo(Resultados, areEqual);

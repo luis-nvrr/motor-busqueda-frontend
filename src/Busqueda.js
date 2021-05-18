@@ -1,41 +1,24 @@
 import React from "react";
-import Buscador from "./Buscador";
-import Typography from "@material-ui/core/Typography";
+
 import Resultados from "./Resultados";
-import AppBar from "@material-ui/core/AppBar";
+
+const areEqual = (prevProps, nextProps) => {
+  return (
+    prevProps.documentos === nextProps.documentos &&
+    prevProps.visualizado === nextProps.visualizado
+  );
+};
 
 const Busqueda = ({
   handleAbrir,
   documentos,
-  buscado,
-  handleBuscarChange,
-  clearBuscado,
-  handleBuscarSubmit,
   handleDescargar,
   handleMostrarInfo,
-  handleCargar,
-  handleListarDocumentos,
   visualizado,
 }) => {
+  console.log("busqueda");
   return (
     <div>
-      <AppBar position="static">
-        <Typography variant="h5" color="inherit">
-          {" "}
-          Motor de Busqueda
-        </Typography>
-      </AppBar>
-      <br></br> <br></br>
-      <Buscador
-        buscado={buscado}
-        handleBuscarChange={handleBuscarChange}
-        clearBuscado={clearBuscado}
-        handleBuscarSubmit={handleBuscarSubmit}
-        handleCargar={handleCargar}
-        handleListarDocumentos={handleListarDocumentos}
-      />
-      <br></br>
-      <br></br>
       <Resultados
         documentos={documentos}
         handleAbrir={handleAbrir}
@@ -47,4 +30,4 @@ const Busqueda = ({
   );
 };
 
-export default Busqueda;
+export default React.memo(Busqueda, areEqual);

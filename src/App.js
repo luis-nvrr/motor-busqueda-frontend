@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import documentoService from "./services/documentos";
 import Busqueda from "./Busqueda";
 import Contenido from "./Contenido";
 import "fontsource-roboto";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
+import Buscador from "./Buscador";
+import Typography from "@material-ui/core/Typography";
+import AppBar from "@material-ui/core/AppBar";
 
 function App() {
   const [documentos, setDocumentos] = useState([]);
@@ -128,17 +131,28 @@ function App() {
           alignItems="center"
         >
           <Grid item xl={12} style={{ paddingLeft: 0, paddingRight: 0 }}>
+            <AppBar position="static">
+              <Typography variant="h5" color="inherit">
+                {" "}
+                Motor de Busqueda
+              </Typography>
+            </AppBar>
+            <br></br> <br></br>
+            <Buscador
+              buscado={buscado}
+              handleBuscarChange={handleBuscarChange}
+              clearBuscado={clearBuscado}
+              handleBuscarSubmit={handleBuscarSubmit}
+              handleCargar={handleCargar}
+              handleListarDocumentos={handleListarDocumentos}
+            />
+            <br></br>
+            <br></br>
             <Busqueda
               handleAbrir={handleAbrir}
               documentos={documentos}
-              handleBuscarChange={handleBuscarChange}
-              buscado={buscado}
-              clearBuscado={clearBuscado}
-              handleBuscarSubmit={handleBuscarSubmit}
               handleDescargar={handleDescargar}
               handleMostrarInfo={handleMostrarInfo}
-              handleCargar={handleCargar}
-              handleListarDocumentos={handleListarDocumentos}
               visualizado={visualizado}
             />
           </Grid>

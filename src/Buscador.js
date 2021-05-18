@@ -4,7 +4,6 @@ import { TextField } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import ListIcon from "@material-ui/icons/List";
-import Box from "@material-ui/core/Box";
 
 const Buscador = ({
   buscado,
