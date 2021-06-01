@@ -23,7 +23,7 @@ const Buscador = ({
           onChange={handleBuscarChange}
           onBlur={clearBuscado}
           size="medium"
-        />
+        />{" "}
         <Button
           startIcon={<SearchIcon />}
           variant="contained"
@@ -42,7 +42,7 @@ const Buscador = ({
         >
           cargar documento
           <input onChange={handleCargar} type="File" hidden />
-        </Button>
+        </Button>{" "}
         <Button
           startIcon={<ListIcon />}
           variant="contained"

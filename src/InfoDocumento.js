@@ -1,16 +1,22 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
-import {List, ListItem} from '@material-ui/core'
+import { List, ListItem } from "@material-ui/core";
 
-const InfoDocumento = ({ titulo, indice, path }) => {
-  const truncado = Math.trunc(indice*100) / 100
+const areEqual = (prevProps, nextProps) => {
+  return prevProps.titulo === nextProps.titulo;
+};
+
+const InfoDocumento = ({ titulo, indice }) => {
+  const truncado = Math.trunc(indice * 100) / 100;
   if (titulo) {
     return (
       <div>
         <Typography variant="h5">Informacion de posteo</Typography>
         <List>
           <ListItem>
-            <Typography variant="body1">indice de relevancia: {truncado}</Typography>
+            <Typography variant="body1">
+              indice de relevancia: {truncado}
+            </Typography>
           </ListItem>
           <ListItem>
             <Typography variant="body1">documento: {titulo}</Typography>
@@ -22,4 +28,4 @@ const InfoDocumento = ({ titulo, indice, path }) => {
   return <div></div>;
 };
 
-export default InfoDocumento;
+export default React.memo(InfoDocumento, areEqual);

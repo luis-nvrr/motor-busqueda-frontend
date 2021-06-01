@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import documentoService from "./services/documentos";
-import Busqueda from "./Busqueda";
+import Resultados from "./Resultados";
 import Contenido from "./Contenido";
 import "fontsource-roboto";
 import Container from "@material-ui/core/Container";
@@ -8,8 +8,34 @@ import Grid from "@material-ui/core/Grid";
 import Buscador from "./Buscador";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
+import { makeStyles } from "@material-ui/styles";
+import InfoDocumento from "./InfoDocumento";
+import CardContent from "@material-ui/core/CardContent";
+import Card from "@material-ui/core/Card";
+
+const useStyles = makeStyles({
+  root: {
+    position: "sticky",
+    top: "1rem",
+    minWidth: "275",
+  },
+  box: {
+    height: "100%",
+    width: "100%",
+  },
+  container: {
+    height: "400px",
+  },
+  innerContainer: {
+    height: "100%",
+  },
+  item: {
+    flex: 1,
+  },
+});
 
 function App() {
+  const classes = useStyles();
   const [documentos, setDocumentos] = useState([]);
   const [abierto, setAbierto] = useState("");
   const [abiertoNombre, setAbiertoNombre] = useState("");
@@ -127,45 +153,58 @@ function App() {
 
   return (
     <Container>
-      <div>
-        <Grid
-          container
-          spacing={8}
-          direction="column"
-          justify="center"
-          alignItems="center"
-        >
-          <Grid item xl={12} style={{ paddingLeft: 0, paddingRight: 0 }}>
-            <AppBar position="static">
-              <Typography variant="h5" color="inherit">
-                {" "}
-                Motor de Busqueda
-              </Typography>
-            </AppBar>
-            <br></br> <br></br>
-            <Buscador
-              buscado={buscado}
-              handleBuscarChange={handleBuscarChange}
-              clearBuscado={clearBuscado}
-              handleBuscarSubmit={handleBuscarSubmit}
-              handleCargar={handleCargar}
-              handleListarDocumentos={handleListarDocumentos}
-            />
-            <br></br>
-            <br></br>
-            <Busqueda
-              handleAbrir={handleAbrir}
-              documentos={documentos}
-              handleDescargar={handleDescargar}
-              handleMostrarInfo={handleMostrarInfo}
-              visualizado={visualizado}
-            />
-          </Grid>
-          <Grid item xs={12} style={{ paddingLeft: 0, paddingRight: 0 }}>
-            <Contenido texto={abierto} titulo={abiertoNombre} />
+      <Grid container spacing={3} direction="row" align="center">
+        <AppBar position="static">
+          <Typography variant="h5" color="inherit">
+            {" "}
+            Motor de Busqueda
+          </Typography>
+        </AppBar>
+        <Grid item xs={12}>
+          <Buscador
+            buscado={buscado}
+            handleBuscarChange={handleBuscarChange}
+            clearBuscado={clearBuscado}
+            handleBuscarSubmit={handleBuscarSubmit}
+            handleCargar={handleCargar}
+            handleListarDocumentos={handleListarDocumentos}
+          />
+        </Grid>
+      </Grid>
+
+      <Grid
+        container
+        className={classes.container}
+        spacing={5}
+        direction="row"
+        justify="center"
+      >
+        <Grid item xs={4}>
+          <Card elevation={10}>
+            <CardContent>
+              <Resultados
+                handleAbrir={handleAbrir}
+                documentos={documentos}
+                handleDescargar={handleDescargar}
+                handleMostrarInfo={handleMostrarInfo}
+              />
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid item xs={8}>
+          <Grid container className={classes.container} spacing={3}>
+            <Grid item xs={12}>
+              <InfoDocumento
+                titulo={visualizado.nombre}
+                indice={visualizado.indice}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Contenido texto={abierto} titulo={abiertoNombre} />
+            </Grid>
           </Grid>
         </Grid>
-      </div>
+      </Grid>
     </Container>
   );
 }

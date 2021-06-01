@@ -1,13 +1,9 @@
 import React from "react";
 import ListaDocumentos from "./ListaDocumentos";
-import InfoDocumento from "./InfoDocumento";
 import Typography from "@material-ui/core/Typography";
 
 const areEqual = (prevProps, nextProps) => {
-  return (
-    prevProps.documentos === nextProps.documentos &&
-    prevProps.visualizado === nextProps.visualizado
-  );
+  return prevProps.documentos === nextProps.documentos;
 };
 
 const Resultados = ({
@@ -15,7 +11,6 @@ const Resultados = ({
   handleAbrir,
   handleDescargar,
   handleMostrarInfo,
-  visualizado,
 }) => {
   if (documentos.length !== 0) {
     return (
@@ -26,13 +21,6 @@ const Resultados = ({
           handleAbrir={handleAbrir}
           handleDescargar={handleDescargar}
           handleMostrarInfo={handleMostrarInfo}
-        />
-        <br></br>
-        <br></br>
-        <InfoDocumento
-          titulo={visualizado.nombre}
-          indice={visualizado.indice}
-          path={visualizado.ubicacion}
         />
       </div>
     );
