@@ -1,5 +1,6 @@
 import axios from "axios";
-const baseUrl = "http://localhost:8080/motor-busqueda-dlc-api-1.0-SNAPSHOT/api";
+const baseUrl =
+  "http://localhost:8080/motor-busqueda-dlc-api-1.0-SNAPSHOT/api/documentos";
 
 const getDocumentoByTermino = (termino) => {
   const request = axios.get(`${baseUrl}/terminos/${termino}`);
@@ -9,14 +10,14 @@ const getDocumentoByTermino = (termino) => {
 const getDocumentoByNombre = (nombre) => {
   return axios({
     method: "get",
-    url: `${baseUrl}/documentos/${nombre}`,
+    url: `${baseUrl}/${nombre}`,
     responseType: "blob",
   });
 };
 
 const saveDocumento = (documento) => {
   return axios
-    .post(`${baseUrl}/documentos`, documento, {
+    .post(`${baseUrl}`, documento, {
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -25,7 +26,7 @@ const saveDocumento = (documento) => {
 };
 
 const getDocumentos = () => {
-  const request = axios.get(`${baseUrl}/documentos`);
+  const request = axios.get(`${baseUrl}`);
   return request.then((response) => response.data);
 };
 
