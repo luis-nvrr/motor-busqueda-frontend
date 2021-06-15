@@ -133,6 +133,7 @@ function App() {
       })
       .catch((error) => {
         console.log("Error en la carga del archivo");
+        alert("Documento Repetido!");
       });
   };
 
